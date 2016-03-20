@@ -1,0 +1,9 @@
+from chroniclingamerica import ChronAm
+from pprint import pprint
+
+search_term = "crypto"
+
+fetcher = ChronAm(search_term,1,1)
+for item in fetcher.fetch():
+	print(item["ocr_eng"])
+
