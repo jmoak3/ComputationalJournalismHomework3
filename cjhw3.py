@@ -15,7 +15,7 @@ def getStates(fetcher):
 
 search_term = "witch"
 
-fetcher1 = ChronAm(search_term, 1,500)
+fetcher1 = ChronAm(search_term, 1,1000)
 statesTable = {}
 statesTable.update(getStates(fetcher1))
 print(statesTable)
