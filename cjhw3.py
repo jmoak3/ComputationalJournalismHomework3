@@ -1,12 +1,11 @@
 from chroniclingamerica import ChronAm
 from pprint import pprint
 
-
 def getStates(fetcher):
 	table = {}
 	for item in fetcher.fetch():
-		if "state" in item:
-			key = item["state"][0]
+		if "date" and "state" in item:
+			key = item["state"][0] + item["date"][:3]
 			if key in table:
 				table[key] += 1
 			else: 
@@ -15,10 +14,10 @@ def getStates(fetcher):
 
 search_term = "witch"
 
-fetcher1 = ChronAm(search_term, 1,1000)
+fetcher1 = ChronAm(search_term, 1, 500)
 statesTable = {}
 statesTable.update(getStates(fetcher1))
 print(statesTable)
-f = open('newspaper.csv', 'w')
+f = open('1860Witches.csv', 'w')
 for key, value in statesTable.items():
 	f.write('{0},{1}\n'.format(key, value))
